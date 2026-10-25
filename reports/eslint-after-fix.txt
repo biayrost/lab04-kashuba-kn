@@ -1,0 +1,18 @@
+[0m
+[4mC:\Users\User\Desktop\Lab04_Kashuba_KN\src\app.js[24m
+    [2m4:7[22m   [31merror[39m    'tax' is assigned a value but never used                               [2mno-unused-vars[22m
+   [2m11:93[22m  [31merror[39m    Duplicate key 'currency'                                               [2mno-dupe-keys[22m
+   [2m85:9[22m   [31merror[39m    Duplicate case label                                                   [2mno-duplicate-case[22m
+  [2m151:21[22m  [33mwarning[39m  Default parameters should be last                                      [2mdefault-param-last[22m
+  [2m174:24[22m  [31merror[39m    'med.quantity' is assigned to itself                                   [2mno-self-assign[22m
+  [2m177:21[22m  [31merror[39m    Empty block statement                                                  [2mno-empty[22m
+  [2m188:10[22m  [31merror[39m    'legacyHelper' is defined but never used                               [2mno-unused-vars[22m
+  [2m189:17[22m  [33mwarning[39m  'batchSize' was used before it was defined                             [2mno-use-before-define[22m
+  [2m191:10[22m  [31merror[39m    Unexpected constant condition                                          [2mno-constant-condition[22m
+  [2m192:21[22m  [31merror[39m    'totl' is not defined                                                  [2mno-undef[22m
+  [2m194:9[22m   [31merror[39m    Use the isNaN function to compare with NaN                             [2muse-isnan[22m
+  [2m198:5[22m   [31merror[39m    Unreachable code                                                       [2mno-unreachable[22m
+  [2m250:1[22m   [31merror[39m    Expected an assignment or function call and instead saw an expression  [2mno-unused-expressions[22m
+
+[31m[1m✖ 13 problems (11 errors, 2 warnings)[22m[39m
+[0m

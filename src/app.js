@@ -105,23 +105,21 @@ function needsAttention(med) {
 function stockLevel(qty) {
     if (qty === 0) {
         return 'немає';
-    } else {
-        return qty < limits.minStock ? 'мало' : 'достатньо';
     }
+    return qty < limits.minStock ? 'мало' : 'достатньо';
 }
 
 function priceCategory(price) {
     if (price > 100) {
         return 'дорогий';
-    } else {
-        return 'доступний';
     }
+    return 'доступний';
 }
 
 function stockValue(list) {
     let total = 0;
     for (const med of list) {
-        total = total + med.price * med.quantity;
+        total += med.price * med.quantity;
     }
     return total;
 }
@@ -135,7 +133,7 @@ function countUnits(list) {
 }
 
 function findCheapest(list) {
-    let cheapest = undefined;
+    let cheapest;
     for (const med of list) {
         if (cheapest === undefined || med.price < cheapest.price) cheapest = med;
     }
@@ -143,7 +141,7 @@ function findCheapest(list) {
 }
 
 function findLatest(list) {
-    let latest = undefined;
+    let latest;
     list.forEach(m => {
         if (!latest || m.expires > latest.expires) latest = m;
     });
@@ -172,7 +170,7 @@ function createOrder(medName, qty, customer, urgent) {
 }
 
 function restock(med, amount) {
-    if (!!med) {
+    if (med) {
         med.quantity = med.quantity;
         med.quantity += amount;
     }
@@ -217,8 +215,8 @@ const sampleRow = printRow(
 console.log(sampleRow);
 
 for (const med of medicines) {
-    if (needsAttention(med)) lowCount = lowCount + 1;
-    if (isExpiringSoon(med)) soonCount = soonCount + 1;
+    if (needsAttention(med)) lowCount += 1;
+    if (isExpiringSoon(med)) soonCount += 1;
 }
 
 const expired = medicines.filter(isExpired);
