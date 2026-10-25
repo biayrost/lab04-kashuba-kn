@@ -1,0 +1,28 @@
+[0m
+[4mC:\Users\User\Desktop\Lab04_Kashuba_KN\src\app.js[24m
+    [2m4:7[22m   [31merror[39m    'tax' is assigned a value but never used                               [2mno-unused-vars[22m
+   [2m15:95[22m  [31merror[39m    Duplicate key 'currency'                                               [2mno-dupe-keys[22m
+   [2m75:9[22m   [31merror[39m    Duplicate case label                                                   [2mno-duplicate-case[22m
+   [2m94:12[22m  [31merror[39m    Unnecessary 'else' after 'return'                                      [2mno-else-return[22m
+  [2m102:10[22m  [31merror[39m    Unnecessary 'else' after 'return'                                      [2mno-else-return[22m
+  [2m110:9[22m   [33mwarning[39m  Assignment (=) can be replaced with operator assignment (+=)           [2moperator-assignment[22m
+  [2m124:9[22m   [31merror[39m    It's not necessary to initialize 'cheapest' to undefined               [2mno-undef-init[22m
+  [2m132:7[22m   [31merror[39m    It's not necessary to initialize 'latest' to undefined                 [2mno-undef-init[22m
+  [2m137:21[22m  [33mwarning[39m  Default parameters should be last                                      [2mdefault-param-last[22m
+  [2m153:9[22m   [31merror[39m    Redundant double negation                                              [2mno-extra-boolean-cast[22m
+  [2m154:24[22m  [31merror[39m    'med.quantity' is assigned to itself                                   [2mno-self-assign[22m
+  [2m157:21[22m  [31merror[39m    Empty block statement                                                  [2mno-empty[22m
+  [2m166:10[22m  [31merror[39m    'legacyHelper' is defined but never used                               [2mno-unused-vars[22m
+  [2m167:14[22m  [33mwarning[39m  'batchSize' was used before it was defined                             [2mno-use-before-define[22m
+  [2m169:6[22m   [31merror[39m    Expected a conditional expression and instead saw an assignment        [2mno-cond-assign[22m
+  [2m169:6[22m   [31merror[39m    Unexpected constant condition                                          [2mno-constant-condition[22m
+  [2m170:15[22m  [31merror[39m    'totl' is not defined                                                  [2mno-undef[22m
+  [2m172:6[22m   [31merror[39m    Use the isNaN function to compare with NaN                             [2muse-isnan[22m
+  [2m174:2[22m   [31merror[39m    Unreachable code                                                       [2mno-unreachable[22m
+  [2m185:30[22m  [33mwarning[39m  Assignment (=) can be replaced with operator assignment (+=)           [2moperator-assignment[22m
+  [2m186:30[22m  [33mwarning[39m  Assignment (=) can be replaced with operator assignment (+=)           [2moperator-assignment[22m
+  [2m215:1[22m   [31merror[39m    Expected an assignment or function call and instead saw an expression  [2mno-unused-expressions[22m
+
+[31m[1m✖ 22 problems (17 errors, 5 warnings)[22m[39m
+[31m[1m  5 errors and 3 warnings potentially fixable with the `--fix` option.[22m[39m
+[0m
