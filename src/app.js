@@ -1,14 +1,13 @@
 // Аптека: облік залишків ліків і термінів придатності
 const TODAY = new Date('2026-10-22');
 const DAY_MS = 24 * 60 * 60 * 1000;
-const tax = 0.2;
 
 const shop = {
     name: "Аптека Здоров'я",
 };
 const hours = {open: 8, close: 20, days: 7, phone: '044-123-45-67'};
 
-const limits = {'max-items': 5, maxPrice: 500, minStock: 20, warnDays: 30, currency: 'UAH', currency: 'грн'};
+const limits = {'max-items': 5, maxPrice: 500, minStock: 20, warnDays: 30, currency: 'грн'};
 
 const rounding = {
     digits: 2,
@@ -68,7 +67,7 @@ const getStatusCode = med => {
     return 'ok';
 };
 
-const discountPrice = med => med.price * 0.8; // знижка 10 % для ліків із коротким терміном
+const discountPrice = med => med.price * 0.9; // знижка 10 % для ліків із коротким терміном
 
 function getStatusText(code) {
     let text;
@@ -82,7 +81,7 @@ function getStatusText(code) {
         case 'expired':
             text = 'прострочено';
             break;
-        case 'soon':
+        case 'discount':
             text = 'діє знижка';
             break;
         default:
@@ -127,7 +126,7 @@ function stockValue(list) {
 function countUnits(list) {
     let units = 0;
     for (let i = 0; i < list.length; i++) {
-        units += list[i].price;
+        units += list[i].quantity;
     }
     return units;
 }
@@ -148,7 +147,7 @@ function findLatest(list) {
     return latest;
 }
 
-function formatLine(prefix = '-', text) {
+function formatLine(text, prefix = '-') {
     return `${prefix} ${text}`;
 }
 
@@ -170,12 +169,11 @@ function createOrder(medName, qty, customer, urgent) {
 }
 
 function restock(med, amount) {
-    if (med) {
-        med.quantity = med.quantity;
-        med.quantity += amount;
-    }
+    if (!med) return null;
     if (amount < 0) {
+        throw new Error('Кількість поповнення не може бути від’ємною');
     }
+    med.quantity += amount;
     return med.quantity;
 }
 
@@ -184,19 +182,6 @@ const countByCategory = list =>
         acc[m.category] = (acc[m.category] || 0) + 1;
         return acc;
     }, {});
-
-function legacyHelper(status, value) {
-    console.log(batchSize);
-    const batchSize = 10;
-    if ((status = 'done')) {
-        console.log(totl);
-    }
-    if (value === NaN) {
-        return batchSize;
-    }
-    return status;
-    console.log('цей рядок недосяжний');
-}
 
 let lowCount = 0;
 let soonCount = 0;
@@ -231,11 +216,11 @@ console.log(`Скоро спливає: ${soonCount}`);
 console.log(`Потребують уваги: ${lowCount}`);
 if (soonCount > 0) console.log(`Знижки діють на ${soonCount} позиції`);
 for (const item of discounted) {
-    console.log(formatLine('%', `${item.name}: ${item.price.toFixed(rounding.digits)}`));
+    console.log(formatLine(`${item.name}: ${item.price.toFixed(rounding.digits)}`, '%'));
 }
 
 const counts = countByCategory(medicines);
-Object.entries(counts).forEach(([cat, n]) => console.log(formatLine('#', `${cat}: ${n}`)));
+Object.entries(counts).forEach(([cat, n]) => console.log(formatLine(`${cat}: ${n}`, '#')));
 console.log(`Ключові категорії: ${categories.join(', ')}`);
 const cheapest = findCheapest(medicines);
 const latest = findLatest(medicines);
@@ -243,11 +228,10 @@ console.log(`Найдешевший: ${cheapest.name}, ${priceCategory(cheapest.
 console.log(`Найдовший термін: ${latest.name} (${latest.expires})`);
 medicines.slice(0, limits['max-items']).forEach(med => {
     console.log(
-        formatLine('*', `${med.name}: ${getStatusText(getStatusCode(med))}, ${stockLevel(med.quantity)}`)
+        formatLine(`${med.name}: ${getStatusText(getStatusCode(med))}, ${stockLevel(med.quantity)}`, '*')
     );
 });
 
-medicines.length > 0;
 const order = createOrder('Ібупрофен', 3, 'Іваненко', true);
 console.log(
     `Замовлення: ${order.customer}, ${order.medicine} x${order.qty}, сума ${order.total.toFixed(rounding.digits)}`
